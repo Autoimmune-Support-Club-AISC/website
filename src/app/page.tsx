@@ -1,65 +1,364 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { useRef, useEffect, useState } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
+import OrganicShape, { FloatingHeart, OrganicDivider, HeartContainer } from "@/components/OrganicShapes";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import PageTransition from "@/components/PageTransition";
+import MaskedTextReveal, { RevealHeading } from "@/components/MaskedTextReveal";
+
+function StaggerText({
+  text,
+  className = "",
+  delay = 0,
+}: {
+  text: string;
+  className?: string;
+  delay?: number;
+}) {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <span className={className}>
+      {text.split("").map((char, i) => (
+        <motion.span
+          key={i}
+          initial={{ opacity: 0, filter: "blur(8px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{
+            duration: 0.5,
+            delay: delay + i * 0.04,
+            ease: "easeOut",
+          }}
+          className="inline-block"
+        >
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </span>
+  );
+}
+
+function ValueCard({
+  title,
+  description,
+  icon,
+  delay,
+}: {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  delay: number;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 40, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.8, delay, ease: [0.23, 1, 0.32, 1] }}
+      whileHover={{
+        y: -8,
+        boxShadow: "0 20px 60px rgba(152, 134, 112, 0.12)",
+        transition: { duration: 0.4 },
+      }}
+      className="glass-card p-8 md:p-10 cursor-hover group animate-morph"
+    >
+      <div className="mb-6 text-blush/70 group-hover:text-blush transition-colors duration-500">
+        {icon}
+      </div>
+      <h3 className="font-serif text-xl mb-3 text-foreground">{title}</h3>
+      <p className="text-foreground-light/60 text-sm leading-relaxed">
+        {description}
+      </p>
+    </motion.div>
+  );
+}
+
+export default function HomePage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 0.8], [1, 0.95]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 150]);
+
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouse = (e: MouseEvent) => {
+      setMousePos({
+        x: (e.clientX / window.innerWidth - 0.5) * 30,
+        y: (e.clientY / window.innerHeight - 0.5) * 30,
+      });
+    };
+    window.addEventListener("mousemove", handleMouse);
+    return () => window.removeEventListener("mousemove", handleMouse);
+  }, []);
+
+  return (
+    <PageTransition>
+      <section
+        ref={heroRef}
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
+        <div
+          className="light-bloom w-[600px] h-[600px] bg-blush/20 top-[-10%] right-[-10%]"
+          style={{
+            transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)`,
+            transition: "transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)",
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <div
+          className="light-bloom w-[500px] h-[500px] bg-taupe/20 bottom-[-5%] left-[-5%]"
+          style={{
+            transform: `translate(${mousePos.x * -0.3}px, ${mousePos.y * -0.3}px)`,
+            transition: "transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)",
+          }}
+        />
+
+        <OrganicShape variant="heart" color="#D79A7D" size={350} className="top-[10%] right-[5%] animate-drift" delay={0.5} />
+        <OrganicShape variant="concave" color="#CFB9A8" size={250} className="bottom-[15%] left-[8%] animate-float-slow" delay={1} />
+        <OrganicShape variant="puzzle" color="#988670" size={180} className="top-[60%] right-[20%] animate-float" delay={1.5} />
+        <OrganicShape variant="interlock" color="#D79A7D" size={140} className="top-[20%] left-[15%] animate-breathe" delay={2} />
+        <OrganicShape color="#D79A7D" size={100} className="bottom-[30%] right-[35%] animate-float-slow" delay={2.5} />
+
+        <FloatingHeart size={600} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+
+        <motion.div
+          style={{ opacity: heroOpacity, scale: heroScale, y: heroY }}
+          className="relative z-10 text-center px-6 max-w-4xl mx-auto"
+        >
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mb-4"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight text-foreground leading-[1.1]">
+              <StaggerText text="Autoimmune" delay={0.8} />
+              <br />
+              <StaggerText text="Support Club" delay={1.4} />
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+            animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            transition={{ duration: 1, delay: 2.2, ease: "easeOut" }}
+            className="font-serif text-lg sm:text-xl md:text-2xl text-foreground-light/70 italic mb-12 tracking-wide"
+          >
+            &ldquo;All we ask for is to be heard&rdquo;
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 2.8 }}
+          >
+            <Link
+              href="/contact"
+              className="glow-button-warm cursor-pointer inline-block bg-blush/90 hover:bg-blush text-white px-10 py-4 rounded-full text-sm font-semibold tracking-widest uppercase font-sans transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+            >
+              Join the Community
+            </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 3.5, duration: 1 }}
+            className="absolute bottom-[-120px] left-1/2 -translate-x-1/2"
+          >
+            <motion.div
+              animate={{ y: [0, 12, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="flex flex-col items-center gap-2"
+            >
+              <span className="text-foreground-light/30 text-xs tracking-widest uppercase">
+                Scroll
+              </span>
+              <div className="w-[1px] h-8 bg-gradient-to-b from-foreground-light/30 to-transparent" />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      <OrganicDivider variant="heartWave" color="#D79A7D" colorAlt="#CFB9A8" />
+
+      <section className="relative py-32 md:py-48 px-6 overflow-hidden">
+        <div className="max-w-4xl mx-auto text-center">
+          <MaskedTextReveal variant="heart" shapeColor="#CFB9A8" shapeColorAlt="#D79A7D">
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-10">
+              You deserve love
+              <br />
+              and support.
+            </h2>
+
+            <div className="space-y-4">
+              <p className="text-foreground-light/60 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+                Living with chronic illness can feel isolating.
+              </p>
+              <p className="text-foreground-light/60 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+                We&apos;re here to remind you that you&apos;re not alone.
+              </p>
+            </div>
+          </MaskedTextReveal>
+
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1.5, delay: 0.5 }}
+            className="mt-16 mx-auto w-24 h-[1px] bg-gradient-to-r from-transparent via-blush/40 to-transparent"
+          />
+        </div>
+        <OrganicShape variant="heart" color="#CFB9A8" size={300} className="top-[10%] right-[-5%] opacity-50" delay={0} />
+        <OrganicShape variant="concave" color="#D79A7D" size={200} className="bottom-[10%] left-[-3%] opacity-40" delay={0.5} />
+      </section>
+
+      <OrganicDivider variant="wave" color="#CFB9A8" colorAlt="#D79A7D" flip />
+
+      <section className="relative py-24 md:py-32 px-6">
+        <div className="max-w-2xl mx-auto text-center">
+          <MaskedTextReveal variant="puzzle" shapeColor="#D79A7D" shapeColorAlt="#CFB9A8">
+            <div className="space-y-6">
+              <p className="font-serif text-2xl md:text-3xl text-foreground/80 leading-relaxed italic">
+                &ldquo;Some days are heavy.
+              </p>
+              <p className="font-serif text-2xl md:text-3xl text-foreground/80 leading-relaxed italic">
+                Some nights are long.
+              </p>
+              <p className="font-serif text-2xl md:text-3xl text-blush/90 leading-relaxed italic">
+                But here, you are seen.&rdquo;
+              </p>
+            </div>
+          </MaskedTextReveal>
+        </div>
+      </section>
+
+      <OrganicDivider variant="blob" color="#988670" colorAlt="#CFB9A8" />
+
+      <section className="relative py-24 md:py-40 px-6 overflow-hidden">
+        <div className="max-w-6xl mx-auto">
+          <RevealHeading className="text-center mb-20">
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+              What We Believe
+            </h2>
+            <p className="text-foreground-light/50 text-sm tracking-widest uppercase">
+              Our Foundation
+            </p>
+          </RevealHeading>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <ValueCard
+              title="Empathy"
+              description="We lead with understanding. Every story matters, every feeling is valid."
+              delay={0}
+              icon={
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              }
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+            <ValueCard
+              title="Inclusivity"
+              description="Every person, every condition, every background — welcome here."
+              delay={0.1}
+              icon={
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                </svg>
+              }
+            />
+            <ValueCard
+              title="Authenticity"
+              description="No pretense. No pressure. Just real conversations and genuine care."
+              delay={0.2}
+              icon={
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              }
+            />
+            <ValueCard
+              title="Confidentiality"
+              description="Your words stay safe. This is a space of trust and discretion."
+              delay={0.3}
+              icon={
+                <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                </svg>
+              }
+            />
+          </div>
         </div>
-      </main>
-    </div>
+        <OrganicShape variant="interlock" color="#988670" size={400} className="top-[50%] left-[-10%] opacity-30" delay={0} />
+        <OrganicShape variant="heart" color="#D79A7D" size={150} className="bottom-[10%] right-[5%] opacity-20" delay={1} />
+      </section>
+
+      <OrganicDivider variant="heartWave" color="#D79A7D" colorAlt="#988670" flip />
+
+      <section className="relative py-24 md:py-40 px-6 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blush/[0.06] to-transparent pointer-events-none" />
+        <div className="max-w-5xl mx-auto relative z-10">
+          <RevealHeading className="text-center mb-20">
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
+              Our Growing Community
+            </h2>
+            <p className="text-foreground-light/50 text-sm tracking-widest uppercase">
+              Together, we are stronger
+            </p>
+          </RevealHeading>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+            <AnimatedCounter end={2500} suffix="+" label="Members Supported" duration={3} />
+            <AnimatedCounter end={18} label="Countries Reached" duration={2.5} />
+            <AnimatedCounter end={400} suffix="+" label="Stories Shared" duration={2.8} />
+          </div>
+        </div>
+        <OrganicShape variant="heart" color="#D79A7D" size={200} className="top-[20%] right-[-5%] opacity-25" delay={0.5} />
+        <OrganicShape variant="concave" color="#CFB9A8" size={160} className="bottom-[15%] left-[-3%] opacity-20" delay={1} />
+      </section>
+
+      <OrganicDivider variant="wave" color="#988670" colorAlt="#D79A7D" />
+
+      <section className="relative py-32 md:py-48 px-6 overflow-hidden">
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          <MaskedTextReveal variant="heart" shapeColor="#988670" shapeColorAlt="#D79A7D">
+            <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-8">
+              You don&apos;t have to carry
+              <br />
+              this alone.
+            </h2>
+
+            <p className="text-foreground-light/60 text-lg mb-12 max-w-xl mx-auto leading-relaxed">
+              Step into a community that listens without judgment and
+              holds space for your truth.
+            </p>
+          </MaskedTextReveal>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <Link
+              href="/contact"
+              className="glow-button-warm cursor-pointer inline-block bg-blush/90 hover:bg-blush text-white px-10 py-4 rounded-full text-sm font-semibold tracking-widest uppercase font-sans transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+            >
+              Reach Out
+            </Link>
+          </motion.div>
+        </div>
+        <FloatingHeart size={400} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50" />
+        <OrganicShape variant="puzzle" color="#D79A7D" size={180} className="top-[15%] left-[8%] opacity-20" delay={0} />
+        <OrganicShape variant="interlock" color="#CFB9A8" size={150} className="bottom-[20%] right-[10%] opacity-15" delay={0.8} />
+      </section>
+    </PageTransition>
   );
 }
