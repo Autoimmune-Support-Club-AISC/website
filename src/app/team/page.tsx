@@ -86,7 +86,7 @@ export default function TeamPage() {
               {/* Prithvi Raj */}
               <div className="flex flex-col items-center">
                 <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-foreground-light/10 mb-4 flex items-center justify-center">
-                  <Image src="/team/prithvi.jpg" alt="Prithvi Raj" fill className="object-cover" />
+                  <Image src="/team/prithvi.jpg" alt="Prithvi Raj" fill className="object-cover object-top" />
                 </div>
                 <h3 className="font-serif text-lg mb-1 text-foreground">Prithvi Raj</h3>
                 <p className="text-blush/80 text-xs font-medium text-center">Design Volunteer</p>
