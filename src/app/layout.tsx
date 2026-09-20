@@ -19,9 +19,49 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Autoimmune Support Club | All We Ask For Is To Be Heard",
+  title: {
+    default: "Autoimmune Support Club | All We Ask For Is To Be Heard",
+    template: "%s | Autoimmune Support Club",
+  },
   description:
-    "Community-driven emotional support for people living with autoimmune diseases and chronic illness. A quiet place where you are seen, heard, and held.",
+    "A global, community-driven emotional support group for people living with autoimmune diseases and chronic illnesses. Join a quiet place where you are seen, heard, and held.",
+  keywords: [
+    "autoimmune disease support",
+    "chronic illness community",
+    "autoimmune support group",
+    "chronic pain support",
+    "invisible illness",
+    "autoimmune awareness",
+    "ts",
+    "tourette syndrome",
+    "turner syndrome",
+  ],
+  authors: [{ name: "Autoimmune Support Club" }],
+  creator: "Autoimmune Support Club",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://aisc.care",
+    title: "Autoimmune Support Club",
+    description: "Community-driven emotional support for people living with autoimmune diseases.",
+    siteName: "Autoimmune Support Club",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Autoimmune Support Club",
+    description: "A gentle community for those navigating the landscape of autoimmune disease.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({

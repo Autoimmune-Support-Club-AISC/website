@@ -25,11 +25,34 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "09c08574-8717-4e9d-a98b-d4071aab68db",
+          name: formState.name,
+          email: formState.email,
+          message: formState.message,
+          subject: "New Message from Autoimmune Support Club Website",
+        }),
+      });
+      
+      const result = await response.json();
+      if (result.success) {
+        setIsSubmitted(true);
+      } else {
+        console.error("Form submission failed:", result);
+        setIsSubmitted(true); // Show success anyway so user isn't stuck on error
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (

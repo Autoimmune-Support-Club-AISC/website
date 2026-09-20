@@ -52,6 +52,7 @@ export default function Footer() {
               {[
                 { href: "/", label: "Home" },
                 { href: "/about", label: "About Us" },
+                { href: "/team", label: "Our Team" },
                 { href: "/blog", label: "Blog" },
                 { href: "/whitepapers", label: "Whitepapers" },
                 { href: "/contact", label: "Contact" },
@@ -79,26 +80,50 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-4">
               <a
-                href="mailto:aisc.care@gmail.com"
+                href="mailto:AISC.care@gmail.com"
                 className="text-foreground-light/60 hover:text-blush text-sm transition-colors duration-300 cursor-hover"
               >
-                aisc.care@gmail.com
+                AISC.care@gmail.com
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.instagram.com/autoimmune_support_club"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-foreground-light/60 hover:text-blush text-sm transition-colors duration-300 cursor-hover flex items-center gap-2"
               >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                >
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                </svg>
+                Instagram (@autoimmune_support_club)
+              </a>
+              <a
+                href="https://www.threads.com/@autoimmune_support_club"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground-light/60 hover:text-blush text-sm transition-colors duration-300 cursor-hover flex items-center gap-2"
+              >
+                Threads
+              </a>
+              <a
+                href="https://www.linkedin.com/company/aisc_care/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground-light/60 hover:text-blush text-sm transition-colors duration-300 cursor-hover flex items-center gap-2"
+              >
                 LinkedIn
+              </a>
+              <a
+                href="https://www.youtube.com/@AutoimmuneSupportClub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground-light/60 hover:text-blush text-sm transition-colors duration-300 cursor-hover flex items-center gap-2"
+              >
+                YouTube
+              </a>
+              <a
+                href="https://linktr.ee/aisc.care"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-foreground-light/60 hover:text-blush text-sm transition-colors duration-300 cursor-hover flex items-center gap-2"
+              >
+                Linktree
               </a>
             </div>
           </motion.div>

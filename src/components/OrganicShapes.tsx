@@ -72,10 +72,7 @@ export default function OrganicShape({
             animate={{ scale: [1, 1.04, 1] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
           />
-          {/* Puzzle inner curves */}
-          <path d="M50 22C50 22 40 42 50 58" stroke={color} strokeOpacity="0.08" strokeWidth="0.6" fill="none" />
-          <path d="M28 46C28 46 50 42 72 46" stroke={color} strokeOpacity="0.08" strokeWidth="0.6" fill="none" />
-          <path d="M35 60C40 55 45 58 50 55C55 52 60 55 65 60" stroke={color} strokeOpacity="0.05" strokeWidth="0.5" fill="none" />
+
         </motion.svg>
       </motion.div>
     );
@@ -263,14 +260,7 @@ export function FloatingHeart({
           stroke="rgba(215, 154, 125, 0.12)"
           strokeWidth="0.5"
         />
-        {/* Puzzle-like inner curves — heart DNA */}
-        <path d="M50 22C50 22 42 40 50 55" stroke="rgba(215, 154, 125, 0.08)" strokeWidth="0.6" fill="none" />
-        <path d="M30 45C30 45 50 42 70 45" stroke="rgba(215, 154, 125, 0.08)" strokeWidth="0.6" fill="none" />
-        <path d="M38 62C43 57 47 60 50 57C53 54 57 57 62 62" stroke="rgba(215, 154, 125, 0.06)" strokeWidth="0.4" fill="none" />
-        {/* Puzzle nubs on seam */}
-        <circle cx="50" cy="40" r="3" fill="rgba(215, 154, 125, 0.04)" />
-        <circle cx="42" cy="52" r="2.5" fill="rgba(207, 185, 168, 0.04)" />
-        <circle cx="58" cy="52" r="2.5" fill="rgba(207, 185, 168, 0.04)" />
+
       </svg>
     </motion.div>
   );

@@ -7,6 +7,7 @@ import OrganicShape, { FloatingHeart, OrganicDivider, HeartContainer } from "@/c
 import AnimatedCounter from "@/components/AnimatedCounter";
 import PageTransition from "@/components/PageTransition";
 import MaskedTextReveal, { RevealHeading } from "@/components/MaskedTextReveal";
+import FAQ from "@/components/FAQ";
 
 function StaggerText({
   text,
@@ -22,8 +23,8 @@ function StaggerText({
       {text.split("").map((char, i) => (
         <motion.span
           key={i}
-          initial={{ opacity: 0, filter: "blur(8px)" }}
-          animate={{ opacity: 1, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.5,
             delay: delay + i * 0.04,
@@ -325,6 +326,8 @@ export default function HomePage() {
       </section>
 
       <OrganicDivider variant="wave" color="#988670" colorAlt="#D79A7D" />
+
+      <FAQ />
 
       <section className="relative py-32 md:py-48 px-6 overflow-hidden">
         <div className="max-w-3xl mx-auto text-center relative z-10">
