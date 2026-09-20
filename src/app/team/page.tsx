@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Image from "next/image";
 import PageTransition from "@/components/PageTransition";
 import OrganicShape from "@/components/OrganicShapes";
 
@@ -43,7 +44,20 @@ export default function TeamPage() {
                   <span className="text-foreground-light/40 text-sm">Image Placeholder</span>
                 </div>
                 <h3 className="font-serif text-2xl mb-2 text-foreground">Angel P.</h3>
-                <p className="text-blush font-medium mb-4">Co-Founder</p>
+                <p className="text-blush font-medium mb-2">Co-Founder</p>
+                
+                <div className="flex items-center gap-4 mb-4">
+                  <a href="mailto:angel.art.des@gmail.com" target="_blank" rel="noopener noreferrer" className="text-foreground-light/60 hover:text-blush transition-colors" title="Email">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2" ry="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                  </a>
+                  <a href="https://linkedin.com/in/angelp-online" target="_blank" rel="noopener noreferrer" className="text-foreground-light/60 hover:text-blush transition-colors" title="LinkedIn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                  </a>
+                  <a href="https://instagram.com/rightangeled" target="_blank" rel="noopener noreferrer" className="text-foreground-light/60 hover:text-blush transition-colors" title="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  </a>
+                </div>
+
                 <p className="text-center text-foreground-light/70 text-sm leading-relaxed max-w-xs">
                   Driven by personal experience with chronic illness to create the space they wished they had.
                 </p>
@@ -69,7 +83,17 @@ export default function TeamPage() {
               Core Volunteers
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-              {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
+              {/* Prithvi Raj */}
+              <div className="flex flex-col items-center">
+                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-foreground-light/10 mb-4 flex items-center justify-center">
+                  <Image src="/team/prithvi.jpg" alt="Prithvi Raj" fill className="object-cover" />
+                </div>
+                <h3 className="font-serif text-lg mb-1 text-foreground">Prithvi Raj</h3>
+                <p className="text-blush/80 text-xs font-medium text-center">Design Volunteer</p>
+              </div>
+              
+              {/* Other Volunteers */}
+              {[2, 3, 4, 5, 6, 7, 8].map((item) => (
                 <div key={item} className="flex flex-col items-center">
                   <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-foreground-light/10 mb-4 flex items-center justify-center">
                     <span className="text-foreground-light/40 text-xs text-center px-2">Volunteer Pic</span>
