@@ -63,10 +63,10 @@ export default function FAQ() {
       
       {/* Background Shapes */}
       <div className="absolute top-0 right-0 -z-10 translate-x-1/4 -translate-y-1/4 opacity-40">
-        <OrganicShape variant="blob" color="#D79A7D" size={400} />
+        <OrganicShape variant="blob" color="var(--color-blush)" size={400} />
       </div>
       <div className="absolute bottom-0 left-0 -z-10 -translate-x-1/4 translate-y-1/4 opacity-30">
-        <OrganicShape variant="concave" color="#CFB9A8" size={300} />
+        <OrganicShape variant="concave" color="var(--color-taupe)" size={300} />
       </div>
 
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
@@ -95,8 +95,8 @@ export default function FAQ() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5, delay: index * 0.1, ease: "easeOut" }}
-                className={`bg-white/60 backdrop-blur-md border border-blush/10 rounded-3xl overflow-hidden transition-all duration-500 ${
-                  isOpen ? "shadow-[0_20px_40px_-15px_rgba(215,154,125,0.15)] bg-white/80" : "shadow-sm hover:shadow-md hover:bg-white/70 hover:border-blush/20"
+                className={`glass-card rounded-3xl overflow-hidden transition-all duration-500 ${
+                  isOpen ? "shadow-[0_20px_40px_-15px_var(--color-blush)] bg-sand-light/50" : "shadow-sm hover:shadow-md hover:bg-sand-light/30 hover:border-blush/20"
                 }`}
               >
                 <button

@@ -88,7 +88,7 @@ export default function CustomCursor() {
           style={{
             width: isHovering ? 40 : 12,
             height: isHovering ? 40 : 12,
-            backgroundColor: isHovering ? "rgba(215, 154, 125, 0.15)" : "#988670",
+            backgroundColor: isHovering ? "rgba(215, 154, 125, 0.15)" : "var(--color-olive)",
             border: isHovering ? "1.5px solid rgba(215, 154, 125, 0.5)" : "none",
             transition: "all 0.4s cubic-bezier(0.23, 1, 0.32, 1)",
             boxShadow: isHovering

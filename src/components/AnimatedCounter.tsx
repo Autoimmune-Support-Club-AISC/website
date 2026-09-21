@@ -57,9 +57,16 @@ export default function AnimatedCounter({
       className="text-center"
     >
       <div className="font-serif text-5xl md:text-6xl text-blush mb-3 tracking-tight">
-        {prefix}
-        {count.toLocaleString()}
-        {suffix}
+        <span className="sr-only">
+          {prefix}
+          {end.toLocaleString()}
+          {suffix}
+        </span>
+        <span aria-hidden="true">
+          {prefix}
+          {count.toLocaleString()}
+          {suffix}
+        </span>
       </div>
       <div className="text-foreground-light/60 text-sm tracking-widest uppercase">
         {label}

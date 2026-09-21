@@ -61,21 +61,21 @@ export default function ContactPage() {
       <section className="relative min-h-[45vh] flex items-center justify-center overflow-hidden pt-24">
         <OrganicShape
           variant="heart"
-          color="#D79A7D"
+          color="var(--color-blush)"
           size={300}
           className="top-[20%] right-[-3%]"
           delay={0.3}
         />
         <OrganicShape
           variant="concave"
-          color="#CFB9A8"
+          color="var(--color-taupe)"
           size={200}
           className="bottom-[10%] left-[3%]"
           delay={0.6}
         />
         <OrganicShape
           variant="puzzle"
-          color="#D79A7D"
+          color="var(--color-blush)"
           size={100}
           className="top-[55%] left-[15%] opacity-20"
           delay={1}
@@ -110,12 +110,12 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <OrganicDivider variant="heartWave" color="#D79A7D" colorAlt="#CFB9A8" />
+      <OrganicDivider variant="heartWave" color="var(--color-blush)" colorAlt="var(--color-taupe)" />
 
       {/* Form Section */}
       <section className="py-16 md:py-24 px-6 relative">
-        <OrganicShape variant="interlock" color="#D79A7D" size={200} className="top-[10%] right-[-5%] opacity-15" delay={0} />
-        <OrganicShape variant="heart" color="#CFB9A8" size={150} className="bottom-[15%] left-[-3%] opacity-15" delay={0.5} />
+        <OrganicShape variant="interlock" color="var(--color-blush)" size={200} className="top-[10%] right-[-5%] opacity-15" delay={0} />
+        <OrganicShape variant="heart" color="var(--color-taupe)" size={150} className="bottom-[15%] left-[-3%] opacity-15" delay={0.5} />
         <div className="max-w-xl mx-auto">
           <AnimatePresence mode="wait">
             {!isSubmitted ? (
@@ -277,7 +277,7 @@ export default function ContactPage() {
                     width="64"
                     height="64"
                     viewBox="0 0 24 24"
-                    fill="#D79A7D"
+                    fill="var(--color-blush)"
                     opacity="0.7"
                   >
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -323,7 +323,7 @@ export default function ContactPage() {
 
       {/* Contact Info */}
       <section className="py-16 md:py-24 px-6 relative overflow-hidden">
-        <OrganicShape variant="heart" color="#D79A7D" size={120} className="top-[30%] right-[5%] opacity-15" delay={0} />
+        <OrganicShape variant="heart" color="var(--color-blush)" size={120} className="top-[30%] right-[5%] opacity-15" delay={0} />
         <div className="max-w-3xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <motion.div
@@ -339,7 +339,7 @@ export default function ContactPage() {
                   height="20"
                   viewBox="0 0 24 24"
                   fill="none"
-                  stroke="#D79A7D"
+                  stroke="var(--color-blush)"
                   strokeWidth="1.5"
                 >
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
@@ -367,7 +367,7 @@ export default function ContactPage() {
                   width="20"
                   height="20"
                   viewBox="0 0 24 24"
-                  fill="#D79A7D"
+                  fill="var(--color-blush)"
                 >
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>

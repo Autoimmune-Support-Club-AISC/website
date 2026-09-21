@@ -3,6 +3,7 @@
 import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import OrganicShape, { FloatingHeart, OrganicDivider, HeartContainer } from "@/components/OrganicShapes";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import PageTransition from "@/components/PageTransition";
@@ -58,11 +59,11 @@ function ValueCard({
       transition={{ duration: 0.8, delay, ease: [0.23, 1, 0.32, 1] }}
       whileHover={{
         y: -8,
-        boxShadow: "0 20px 60px rgba(152, 134, 112, 0.12)",
         transition: { duration: 0.4 },
       }}
-      className="glass-card p-8 md:p-10 cursor-hover group animate-morph"
+      className="relative p-8 md:p-10 cursor-hover group flex flex-col items-center text-center h-full"
     >
+      <div className="absolute inset-0 bg-gradient-to-br from-blush/10 to-taupe/10 border border-blush/20 backdrop-blur-md -z-10 animate-blob group-hover:bg-blush/15 group-hover:shadow-[0_20px_60px_rgba(215,154,125,0.15)] transition-all duration-500" />
       <div className="mb-6 text-blush/70 group-hover:text-blush transition-colors duration-500">
         {icon}
       </div>
@@ -119,11 +120,11 @@ export default function HomePage() {
           }}
         />
 
-        <OrganicShape variant="heart" color="#D79A7D" size={350} className="top-[10%] right-[5%] animate-drift" delay={0.5} />
-        <OrganicShape variant="concave" color="#CFB9A8" size={250} className="bottom-[15%] left-[8%] animate-float-slow" delay={1} />
-        <OrganicShape variant="puzzle" color="#988670" size={180} className="top-[60%] right-[20%] animate-float" delay={1.5} />
-        <OrganicShape variant="interlock" color="#D79A7D" size={140} className="top-[20%] left-[15%] animate-breathe" delay={2} />
-        <OrganicShape color="#D79A7D" size={100} className="bottom-[30%] right-[35%] animate-float-slow" delay={2.5} />
+        <OrganicShape variant="heart" color="var(--color-blush)" size={350} className="top-[10%] right-[5%] animate-drift" delay={0.5} />
+        <OrganicShape variant="concave" color="var(--color-taupe)" size={250} className="bottom-[15%] left-[8%] animate-float-slow" delay={1} />
+        <OrganicShape variant="puzzle" color="var(--color-olive)" size={180} className="top-[60%] right-[20%] animate-float" delay={1.5} />
+        <OrganicShape variant="interlock" color="var(--color-blush)" size={140} className="top-[20%] left-[15%] animate-breathe" delay={2} />
+        <OrganicShape color="var(--color-blush)" size={100} className="bottom-[30%] right-[35%] animate-float-slow" delay={2.5} />
 
         <FloatingHeart size={600} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
 
@@ -157,13 +158,22 @@ export default function HomePage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 2.8 }}
+            className="flex flex-col sm:flex-row gap-4 items-center justify-center"
           >
             <Link
               href="/contact"
-              className="glow-button-warm cursor-pointer inline-block bg-blush/90 hover:bg-blush text-white px-10 py-4 rounded-full text-sm font-semibold tracking-widest uppercase font-sans transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+              className="glow-button-warm cursor-pointer inline-block bg-blush/90 hover:bg-blush text-white px-8 py-4 rounded-full text-sm font-semibold tracking-widest uppercase font-sans transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
             >
               Join the Community
             </Link>
+            <a
+              href="https://forms.gle/pBvJt9nMBDwPngbD9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glow-button-warm cursor-pointer inline-block bg-taupe/90 hover:bg-taupe text-foreground px-8 py-4 rounded-full text-sm font-semibold tracking-widest uppercase font-sans transition-all duration-300 shadow-md hover:scale-105 active:scale-95"
+            >
+              Volunteer App
+            </a>
           </motion.div>
 
           <motion.div
@@ -186,11 +196,11 @@ export default function HomePage() {
         </motion.div>
       </section>
 
-      <OrganicDivider variant="heartWave" color="#D79A7D" colorAlt="#CFB9A8" />
+      <OrganicDivider variant="heartWave" color="var(--color-blush)" colorAlt="var(--color-taupe)" />
 
       <section className="relative py-32 md:py-48 px-6 overflow-hidden">
         <div className="max-w-4xl mx-auto text-center">
-          <MaskedTextReveal variant="heart" shapeColor="#CFB9A8" shapeColorAlt="#D79A7D">
+          <MaskedTextReveal variant="heart" shapeColor="var(--color-taupe)" shapeColorAlt="var(--color-blush)">
             <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-foreground leading-tight mb-10">
               You deserve love
               <br />
@@ -215,35 +225,29 @@ export default function HomePage() {
             className="mt-16 mx-auto w-24 h-[1px] bg-gradient-to-r from-transparent via-blush/40 to-transparent"
           />
         </div>
-        <OrganicShape variant="heart" color="#CFB9A8" size={300} className="top-[10%] right-[-5%] opacity-50" delay={0} />
-        <OrganicShape variant="concave" color="#D79A7D" size={200} className="bottom-[10%] left-[-3%] opacity-40" delay={0.5} />
+        <OrganicShape variant="heart" color="var(--color-taupe)" size={300} className="top-[10%] right-[-5%] opacity-50" delay={0} />
+        <OrganicShape variant="concave" color="var(--color-blush)" size={200} className="bottom-[10%] left-[-3%] opacity-40" delay={0.5} />
       </section>
 
-      <OrganicDivider variant="wave" color="#CFB9A8" colorAlt="#D79A7D" flip />
+      <OrganicDivider variant="wave" color="var(--color-taupe)" colorAlt="var(--color-blush)" flip />
 
-      <section className="relative py-24 md:py-32 px-6">
-        <div className="max-w-2xl mx-auto text-center">
-          <MaskedTextReveal variant="puzzle" shapeColor="#D79A7D" shapeColorAlt="#CFB9A8">
-            <div className="space-y-6">
-              <p className="font-serif text-2xl md:text-3xl text-foreground/80 leading-relaxed italic">
-                &ldquo;Some days are heavy.
-              </p>
-              <p className="font-serif text-2xl md:text-3xl text-foreground/80 leading-relaxed italic">
-                Some nights are long.
-              </p>
-              <p className="font-serif text-2xl md:text-3xl text-blush/90 leading-relaxed italic">
-                But here, you are seen.&rdquo;
-              </p>
-            </div>
-          </MaskedTextReveal>
-        </div>
-      </section>
-
-      <OrganicDivider variant="blob" color="#988670" colorAlt="#CFB9A8" />
-
-      <section className="relative py-24 md:py-40 px-6 overflow-hidden">
+      <section className="relative py-16 md:py-24 px-6 overflow-hidden">
         <div className="max-w-6xl mx-auto">
-          <RevealHeading className="text-center mb-20">
+          {/* Quote Section (Merged) */}
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <MaskedTextReveal variant="puzzle" shapeColor="var(--color-blush)" shapeColorAlt="var(--color-taupe)">
+              <div className="space-y-4">
+                <p className="font-serif text-2xl md:text-3xl text-foreground/80 leading-relaxed italic">
+                  &ldquo;Some days are heavy. Some nights are long.
+                </p>
+                <p className="font-serif text-2xl md:text-3xl text-blush/90 leading-relaxed italic">
+                  But here, you are seen.&rdquo;
+                </p>
+              </div>
+            </MaskedTextReveal>
+          </div>
+
+          <RevealHeading className="text-center mb-12">
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-4">
               What We Believe
             </h2>
@@ -297,11 +301,11 @@ export default function HomePage() {
             />
           </div>
         </div>
-        <OrganicShape variant="interlock" color="#988670" size={400} className="top-[50%] left-[-10%] opacity-30" delay={0} />
-        <OrganicShape variant="heart" color="#D79A7D" size={150} className="bottom-[10%] right-[5%] opacity-20" delay={1} />
+        <OrganicShape variant="interlock" color="var(--color-olive)" size={400} className="top-[50%] left-[-10%] opacity-30" delay={0} />
+        <OrganicShape variant="heart" color="var(--color-blush)" size={150} className="bottom-[10%] right-[5%] opacity-20" delay={1} />
       </section>
 
-      <OrganicDivider variant="heartWave" color="#D79A7D" colorAlt="#988670" flip />
+      <OrganicDivider variant="heartWave" color="var(--color-blush)" colorAlt="var(--color-olive)" flip />
 
       <section className="relative py-24 md:py-40 px-6 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blush/[0.06] to-transparent pointer-events-none" />
@@ -318,20 +322,22 @@ export default function HomePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
             <AnimatedCounter end={2500} suffix="+" label="Members Supported" duration={3} />
             <AnimatedCounter end={18} label="Countries Reached" duration={2.5} />
-            <AnimatedCounter end={400} suffix="+" label="Stories Shared" duration={2.8} />
+            <AnimatedCounter end={300} suffix="+" label="Stories Shared" duration={2.8} />
           </div>
         </div>
-        <OrganicShape variant="heart" color="#D79A7D" size={200} className="top-[20%] right-[-5%] opacity-25" delay={0.5} />
-        <OrganicShape variant="concave" color="#CFB9A8" size={160} className="bottom-[15%] left-[-3%] opacity-20" delay={1} />
+        <OrganicShape variant="heart" color="var(--color-blush)" size={200} className="top-[20%] right-[-5%] opacity-25" delay={0.5} />
+        <OrganicShape variant="concave" color="var(--color-taupe)" size={160} className="bottom-[15%] left-[-3%] opacity-20" delay={1} />
       </section>
 
-      <OrganicDivider variant="wave" color="#988670" colorAlt="#D79A7D" />
+
+
+      <OrganicDivider variant="blob" color="var(--color-taupe)" colorAlt="var(--color-blush)" />
 
       <FAQ />
 
       <section className="relative py-32 md:py-48 px-6 overflow-hidden">
         <div className="max-w-3xl mx-auto text-center relative z-10">
-          <MaskedTextReveal variant="heart" shapeColor="#988670" shapeColorAlt="#D79A7D">
+          <MaskedTextReveal variant="heart" shapeColor="var(--color-olive)" shapeColorAlt="var(--color-blush)">
             <h2 className="font-serif text-3xl md:text-5xl text-foreground leading-tight mb-8">
               You don&apos;t have to carry
               <br />
@@ -359,8 +365,8 @@ export default function HomePage() {
           </motion.div>
         </div>
         <FloatingHeart size={400} className="top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-50" />
-        <OrganicShape variant="puzzle" color="#D79A7D" size={180} className="top-[15%] left-[8%] opacity-20" delay={0} />
-        <OrganicShape variant="interlock" color="#CFB9A8" size={150} className="bottom-[20%] right-[10%] opacity-15" delay={0.8} />
+        <OrganicShape variant="puzzle" color="var(--color-blush)" size={180} className="top-[15%] left-[8%] opacity-20" delay={0} />
+        <OrganicShape variant="interlock" color="var(--color-taupe)" size={150} className="bottom-[20%] right-[10%] opacity-15" delay={0.8} />
       </section>
     </PageTransition>
   );

@@ -36,8 +36,8 @@ const heartMaskPath =
  */
 export default function MaskedTextReveal({
   children,
-  shapeColor = "#CFB9A8",
-  shapeColorAlt = "#D79A7D",
+  shapeColor = "var(--color-taupe)",
+  shapeColorAlt = "var(--color-blush)",
   width = "100%",
   height = "auto",
   className = "",
@@ -271,7 +271,7 @@ export default function MaskedTextReveal({
 export function RevealHeading({
   children,
   className = "",
-  accentColor = "#D79A7D",
+  accentColor = "var(--color-blush)",
 }: {
   children: React.ReactNode;
   className?: string;

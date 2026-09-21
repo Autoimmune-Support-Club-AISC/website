@@ -64,22 +64,26 @@ export const metadata: Metadata = {
   },
 };
 
+import { ThemeProvider } from "@/components/ThemeProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="lenis">
+    <html lang="en" className="lenis" suppressHydrationWarning>
       <body
-        className={`${playfair.variable} ${dmSans.variable} antialiased font-sans`}
+        className={`${playfair.variable} ${dmSans.variable} antialiased font-sans transition-colors duration-500`}
       >
-        <SmoothScroll>
-          <AmbientBlobs />
-          <Navigation />
-          <main>{children}</main>
-          <Footer />
-        </SmoothScroll>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <SmoothScroll>
+            <AmbientBlobs />
+            <Navigation />
+            <main>{children}</main>
+            <Footer />
+          </SmoothScroll>
+        </ThemeProvider>
       </body>
     </html>
   );

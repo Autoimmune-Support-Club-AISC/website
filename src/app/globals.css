@@ -15,6 +15,39 @@
   --color-foreground-light: #6B5D50;
   --font-serif: var(--font-playfair);
   --font-sans: var(--font-dm-sans);
+  
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.25);
+  --glass-org-bg: linear-gradient(145deg, rgba(255,255,255,0.18), rgba(215,154,125,0.04), rgba(255,255,255,0.10));
+  --glass-org-border: rgba(215, 154, 125, 0.12);
+  --glass-org-shadow: 0 10px 40px rgba(215, 154, 125, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  --glow-shadow: 0 0 40px rgba(215, 154, 125, 0.3), 0 0 80px rgba(215, 154, 125, 0.1);
+  --glow-shadow-hover: 0 0 50px rgba(215, 154, 125, 0.35), 0 0 100px rgba(215, 154, 125, 0.12);
+  --glow-warm: linear-gradient(135deg, rgba(215,154,125,0.25), rgba(207,185,168,0.15), rgba(215,154,125,0.25));
+}
+
+.dark {
+  --color-sand: #1C1917;
+  --color-sand-light: #292524;
+  --color-blush: #D79A7D;
+  --color-blush-light: #E4B8A2;
+  --color-blush-dark: #C4815F;
+  --color-taupe: #57534E;
+  --color-taupe-light: #78716C;
+  --color-olive: #78716C;
+  --color-olive-dark: #A8A29E;
+  --color-cream: #171717;
+  --color-foreground: #F5F5F4;
+  --color-foreground-light: #D6D3D1;
+  
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-org-bg: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(228,184,162,0.02), rgba(255,255,255,0.01));
+  --glass-org-border: rgba(228, 184, 162, 0.15);
+  --glass-org-shadow: 0 10px 40px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  --glow-shadow: 0 0 40px rgba(228, 184, 162, 0.15), 0 0 80px rgba(228, 184, 162, 0.05);
+  --glow-shadow-hover: 0 0 50px rgba(228, 184, 162, 0.2), 0 0 100px rgba(228, 184, 162, 0.08);
+  --glow-warm: linear-gradient(135deg, rgba(228,184,162,0.15), rgba(120,113,108,0.1), rgba(228,184,162,0.15));
 }
 
 /* Smooth scroll */
@@ -36,9 +69,10 @@ html.lenis, html.lenis body {
 
 /* Global styles */
 body {
-  background-color: #EAE0D7;
-  color: #4A3F35;
+  background-color: var(--color-sand);
+  color: var(--color-foreground);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Ensure interactive elements have pointer cursor */
@@ -53,21 +87,21 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select {
 
 /* Glassmorphism card */
 .glass-card {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--glass-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid var(--glass-border);
   border-radius: 24px;
 }
 
 /* Organic glass card — heart-inspired border radius */
 .glass-card-organic {
-  background: linear-gradient(145deg, rgba(255,255,255,0.18), rgba(215,154,125,0.04), rgba(255,255,255,0.10));
+  background: var(--glass-org-bg);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(215, 154, 125, 0.12);
+  border: 1px solid var(--glass-org-border);
   border-radius: 38% 38% 44% 44% / 24% 24% 40% 40%;
-  box-shadow: 0 10px 40px rgba(215, 154, 125, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: var(--glass-org-shadow);
 }
 
 /* Soft glow button */
@@ -77,7 +111,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select {
 
 .glow-button:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(215, 154, 125, 0.3), 0 0 80px rgba(215, 154, 125, 0.1);
+  box-shadow: var(--glow-shadow);
 }
 
 /* Organic glow button — warm pulse on hover */
@@ -91,7 +125,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select {
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, rgba(215,154,125,0.25), rgba(207,185,168,0.15), rgba(215,154,125,0.25));
+  background: var(--glow-warm);
   border-radius: inherit;
   opacity: 0;
   transition: opacity 0.5s ease;
@@ -104,7 +138,7 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select {
 
 .glow-button-warm:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 50px rgba(215, 154, 125, 0.35), 0 0 100px rgba(215, 154, 125, 0.12);
+  box-shadow: var(--glow-shadow-hover);
 }
 
 /* Light bloom effect */
@@ -179,6 +213,16 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select {
   animation: morph 15s ease-in-out infinite;
 }
 
+@keyframes blob-extreme {
+  0%   { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+  34%  { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
+  67%  { border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%; }
+  100% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; }
+}
+.animate-blob {
+  animation: blob-extreme 12s ease-in-out infinite alternate;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .animate-float,
@@ -186,7 +230,8 @@ a, button, [role="button"], input[type="submit"], input[type="button"], select {
   .animate-breathe,
   .animate-drift,
   .animate-pulse-warm,
-  .animate-morph {
+  .animate-morph,
+  .animate-blob {
     animation: none !important;
   }
 

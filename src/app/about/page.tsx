@@ -39,21 +39,21 @@ export default function AboutPage() {
       <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden pt-24">
         <OrganicShape
           variant="heart"
-          color="#D79A7D"
+          color="var(--color-blush)"
           size={400}
           className="top-[15%] right-[-5%]"
           delay={0.3}
         />
         <OrganicShape
           variant="concave"
-          color="#CFB9A8"
+          color="var(--color-taupe)"
           size={250}
           className="bottom-[20%] left-[5%]"
           delay={0.6}
         />
         <OrganicShape
           variant="puzzle"
-          color="#D79A7D"
+          color="var(--color-blush)"
           size={120}
           className="top-[50%] left-[20%] opacity-20"
           delay={1}
@@ -91,7 +91,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <OrganicDivider variant="heartWave" color="#D79A7D" colorAlt="#CFB9A8" />
+      <OrganicDivider variant="heartWave" color="var(--color-blush)" colorAlt="var(--color-taupe)" />
 
       {/* Founder Story */}
       <section className="relative py-24 md:py-36 px-6 overflow-hidden">
@@ -120,7 +120,7 @@ export default function AboutPage() {
                     height="20"
                     viewBox="0 0 24 24"
                     fill="none"
-                    stroke="#D79A7D"
+                    stroke="var(--color-blush)"
                     strokeWidth="1.5"
                   >
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -140,12 +140,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <OrganicDivider variant="wave" color="#CFB9A8" colorAlt="#988670" flip />
+      <OrganicDivider variant="wave" color="var(--color-taupe)" colorAlt="var(--color-olive)" flip />
 
       {/* Mission */}
       <section className="relative py-24 md:py-36 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <MaskedTextReveal variant="heart" shapeColor="#CFB9A8" shapeColorAlt="#D79A7D">
+          <MaskedTextReveal variant="heart" shapeColor="var(--color-taupe)" shapeColorAlt="var(--color-blush)">
             <h2 className="font-serif text-3xl md:text-4xl text-foreground mb-8">
               Our Mission
             </h2>
@@ -162,20 +162,20 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <OrganicDivider variant="blob" color="#988670" colorAlt="#D79A7D" />
+      <OrganicDivider variant="blob" color="var(--color-olive)" colorAlt="var(--color-blush)" />
 
       {/* Timeline */}
       <section className="relative py-24 md:py-36 px-6 overflow-hidden">
         <OrganicShape
           variant="interlock"
-          color="#988670"
+          color="var(--color-olive)"
           size={300}
           className="top-[20%] right-[-8%] opacity-30"
           delay={0}
         />
         <OrganicShape
           variant="heart"
-          color="#D79A7D"
+          color="var(--color-blush)"
           size={150}
           className="bottom-[10%] left-[5%] opacity-20"
           delay={0.5}

@@ -38,7 +38,7 @@ const interlockPath =
 
 export default function OrganicShape({
   className = "",
-  color = "#D79A7D",
+  color = "var(--color-blush)",
   size = 200,
   delay = 0,
   duration = 20,
@@ -128,7 +128,7 @@ export default function OrganicShape({
           <defs>
             <linearGradient id={`ig-${delay}`} x1="0%" y1="0%" x2="100%" y2="100%">
               <stop offset="0%" stopColor={color} stopOpacity="0.12" />
-              <stop offset="50%" stopColor="#CFB9A8" stopOpacity="0.08" />
+              <stop offset="50%" stopColor="var(--color-taupe)" stopOpacity="0.08" />
               <stop offset="100%" stopColor={color} stopOpacity="0.05" />
             </linearGradient>
           </defs>
@@ -161,7 +161,7 @@ export default function OrganicShape({
           <defs>
             <linearGradient id={`pg-${delay}`} x1="20%" y1="0%" x2="80%" y2="100%">
               <stop offset="0%" stopColor={color} stopOpacity="0.16" />
-              <stop offset="100%" stopColor="#988670" stopOpacity="0.06" />
+              <stop offset="100%" stopColor="var(--color-olive)" stopOpacity="0.06" />
             </linearGradient>
           </defs>
           {/* Puzzle piece shape — rounded tabs and concave slots */}
@@ -242,13 +242,13 @@ export function FloatingHeart({
       <svg viewBox="0 0 100 100" className="w-full h-full" fill="none">
         <defs>
           <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#D79A7D" stopOpacity="0.10" />
-            <stop offset="50%" stopColor="#CFB9A8" stopOpacity="0.14" />
-            <stop offset="100%" stopColor="#D79A7D" stopOpacity="0.08" />
+            <stop offset="0%" stopColor="var(--color-blush)" stopOpacity="0.10" />
+            <stop offset="50%" stopColor="var(--color-taupe)" stopOpacity="0.14" />
+            <stop offset="100%" stopColor="var(--color-blush)" stopOpacity="0.08" />
           </linearGradient>
           <radialGradient id="heartGlow" cx="50%" cy="45%">
-            <stop offset="0%" stopColor="#D79A7D" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="#D79A7D" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--color-blush)" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="var(--color-blush)" stopOpacity="0" />
           </radialGradient>
         </defs>
         {/* Outer glow */}
@@ -318,8 +318,8 @@ export function AmbientBlobs({ className = "" }: { className?: string }) {
    Replaces hard section breaks with living curves
    ──────────────────────────────────────────── */
 export function OrganicDivider({
-  color = "#D79A7D",
-  colorAlt = "#CFB9A8",
+  color = "var(--color-blush)",
+  colorAlt = "var(--color-taupe)",
   flip = false,
   variant = "wave",
   className = "",
@@ -382,7 +382,7 @@ export function OrganicDivider({
 export function HeartContainer({
   children,
   className = "",
-  color = "#D79A7D",
+  color = "var(--color-blush)",
 }: {
   children: React.ReactNode;
   className?: string;

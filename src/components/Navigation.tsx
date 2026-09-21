@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -92,6 +93,8 @@ export default function Navigation() {
               );
             })}
 
+            <ThemeToggle />
+            
             {/* Desktop Join Us Button */}
             <Link
               href="/contact"

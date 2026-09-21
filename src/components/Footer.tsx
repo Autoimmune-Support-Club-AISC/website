@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-olive-dark/20">
       {/* Organic wave divider instead of hard border line */}
-      <OrganicDivider variant="heartWave" color="#D79A7D" colorAlt="#CFB9A8" flip className="relative z-10" />
+      <OrganicDivider variant="heartWave" color="var(--color-blush)" colorAlt="var(--color-taupe)" flip className="relative z-10" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
