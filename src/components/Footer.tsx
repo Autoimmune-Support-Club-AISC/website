@@ -133,7 +133,7 @@ export default function Footer() {
         <div className="mt-16 pt-8 border-t border-taupe/15">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-foreground-light/40 text-xs tracking-wider">
-              © {new Date().getFullYear()} Autoimmune Support Club. All rights reserved.
+              &copy; {new Date().getFullYear()} Autoimmune Support Club. All rights reserved.
             </p>
             <p className="text-foreground-light/30 text-xs italic font-serif">
               &ldquo;All we ask for is to be heard&rdquo;
