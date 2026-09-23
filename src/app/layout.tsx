@@ -76,7 +76,7 @@ export default function RootLayout({
       <body
         className={`${playfair.variable} ${dmSans.variable} antialiased font-sans transition-colors duration-500`}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
           <SmoothScroll>
             <AmbientBlobs />
             <Navigation />
