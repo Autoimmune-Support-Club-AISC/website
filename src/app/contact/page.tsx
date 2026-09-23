@@ -331,9 +331,11 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
-              className="glass-card-organic p-8 text-center"
+              whileHover={{ y: -8, transition: { duration: 0.4 } }}
+              className="relative p-8 text-center group cursor-hover"
             >
-              <div className="w-12 h-12 rounded-full bg-blush/10 flex items-center justify-center mx-auto mb-4">
+              <div className="absolute inset-0 bg-gradient-to-br from-blush/10 to-taupe/10 border border-blush/20 backdrop-blur-md -z-10 animate-blob group-hover:bg-blush/15 group-hover:shadow-[0_20px_60px_rgba(215,154,125,0.15)] transition-all duration-500" />
+              <div className="w-12 h-12 rounded-full bg-blush/10 flex items-center justify-center mx-auto mb-4 text-blush/70 group-hover:text-blush transition-colors duration-500">
                 <svg
                   width="20"
                   height="20"
@@ -360,9 +362,11 @@ export default function ContactPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.15 }}
-              className="glass-card-organic p-8 text-center"
+              whileHover={{ y: -8, transition: { duration: 0.4 } }}
+              className="relative p-8 text-center group cursor-hover"
             >
-              <div className="w-12 h-12 rounded-full bg-blush/10 flex items-center justify-center mx-auto mb-4">
+              <div className="absolute inset-0 bg-gradient-to-br from-blush/10 to-taupe/10 border border-blush/20 backdrop-blur-md -z-10 animate-blob group-hover:bg-blush/15 group-hover:shadow-[0_20px_60px_rgba(215,154,125,0.15)] transition-all duration-500" />
+              <div className="w-12 h-12 rounded-full bg-blush/10 flex items-center justify-center mx-auto mb-4 text-blush/70 group-hover:text-blush transition-colors duration-500">
                 <svg
                   width="20"
                   height="20"
