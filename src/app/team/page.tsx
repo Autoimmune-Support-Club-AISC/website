@@ -96,7 +96,16 @@ export default function TeamPage() {
                 <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden bg-foreground-light/10 mb-4 flex items-center justify-center">
                   <Image src="/team/Sruthinaya_B.webp" alt="Sruthinaya Baskaran" fill className="object-cover object-top" />
                 </div>
-                <h3 className="font-serif text-lg mb-1 text-foreground">Sruthinaya Baskaran</h3>
+                <h3 className="font-serif text-lg mb-1 text-foreground">
+  <a
+    href="https://www.linkedin.com/in/sruthinaya-baskaran-418143323"
+    target="_blank"
+    rel="noopener noreferrer"
+    className="hover:text-blush transition-colors"
+  >
+    Sruthinaya Baskaran
+  </a>
+</h3>
                 <p className="text-blush/80 text-xs font-medium text-center">Article and Content Writing Volunteer</p>
               </div>
               
